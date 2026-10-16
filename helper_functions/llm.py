@@ -1,20 +1,16 @@
 import os
-import streamlit as st
-from dotenv import load_dotenv
-from openai import OpenAI
 import tiktoken
-
+import streamlit as st
+from openai import OpenAI
+from dotenv import load_dotenv
 
 if load_dotenv('.env'):
-   # for local development
-   OPENAI_KEY = os.getenv('OPENAI_API_KEY')
+    # for local development
+    OPENAI_KEY = os.getenv('OPENAI_API_KEY')
 else:
-   OPENAI_KEY = st.secrets['OPENAI_API_KEY']
+    OPENAI_KEY = st.secrets['OPENAI_API_KEY']
 
-
-# Pass the API Key to the OpenAI Client
 client = OpenAI(api_key=OPENAI_KEY)
-# Some other code here are omitted for brevity
 
 
 def get_completion(messages, model="gpt-4o-mini", temperature=0):
